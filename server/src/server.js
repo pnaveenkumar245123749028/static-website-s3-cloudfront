@@ -4,7 +4,8 @@ import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
 import compression from 'compression';
-import { config } from './config/env.js';
+import { config, validateConfigOrThrow } from './config/env.js';
+import logger from './config/logger.js';
 import { connectDB } from './config/db.js';
 import { initSocket } from './config/socket.js';
 import { initRedis } from './config/queue.js';
@@ -79,15 +80,22 @@ app.use(errorHandler);
 
 // 5. Connect Database and Start Server
 async function startServer() {
+  // Validate critical env vars for production
+  try {
+    validateConfigOrThrow();
+  } catch (err) {
+    logger.error({ err: err.message }, 'Configuration validation failed');
+    process.exit(1);
+  }
+
   await connectDB();
 
   if (process.env.NODE_ENV !== 'test') {
     server.listen(config.PORT, () => {
-      console.log(`\n======================================================`);
-      console.log(`🚀 Agentflow_AI Server running on port ${config.PORT}`);
-      console.log(`📡 Client URL: ${config.CLIENT_URL}`);
-      console.log(`🔍 Health check: http://localhost:${config.PORT}/api/health`);
-      console.log(`======================================================\n`);
+      logger.info('======================================================');
+      logger.info({ port: config.PORT, client: config.CLIENT_URL }, 'Agentflow_AI Server running');
+      logger.info({ health: `http://localhost:${config.PORT}/api/health` }, 'Health check');
+      logger.info('======================================================');
     });
   }
 }

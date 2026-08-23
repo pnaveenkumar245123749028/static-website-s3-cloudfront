@@ -1,6 +1,7 @@
 import { Server } from 'socket.io';
 import jwt from 'jsonwebtoken';
 import { config } from './env.js';
+import logger from './logger.js';
 
 let ioInstance = null;
 
@@ -14,17 +15,21 @@ export function initSocket(httpServer) {
     transports: ['websocket', 'polling'],
   });
 
+  if (config.REDIS_URL) {
+    logger.info('REDIS_URL detected. For socket scaling, configure a socket.io Redis adapter and sticky sessions.');
+  }
+
   ioInstance.use((socket, next) => {
     const token = socket.handshake.auth?.token || socket.handshake.query?.token;
     if (!token) {
-      // Allow anonymous connection for demo/preview, or attach user if provided
       return next();
     }
     try {
       const decoded = jwt.verify(token, config.JWT_SECRET);
       socket.user = decoded;
       next();
-    } catch {
+    } catch (err) {
+      logger.warn({ err: err.message }, 'Socket auth failed — allowing anonymous connection');
       next();
     }
   });
@@ -73,7 +78,6 @@ export function emitExecutionStatus(executionId, statusData) {
     ...statusData,
     timestamp: new Date().toISOString(),
   });
-  // Also emit to all connected clients for dashboard execution updates
   ioInstance.emit('execution:update', {
     executionId,
     ...statusData,
@@ -86,6 +90,5 @@ export function emitNotification(userId, notification) {
   if (userId) {
     ioInstance.to(`user:${userId}`).emit('notification:new', notification);
   }
-  // broadcast general notifications
   ioInstance.emit('notification:broadcast', notification);
 }

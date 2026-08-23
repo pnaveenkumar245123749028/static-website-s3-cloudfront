@@ -1,6 +1,7 @@
 import { Queue, Worker } from 'bullmq';
 import Redis from 'ioredis';
 import { config } from './env.js';
+import logger from './logger.js';
 
 let redisClient = null;
 let isRedisAvailable = false;
@@ -13,7 +14,7 @@ export function initRedis() {
         enableReadyCheck: false,
         retryStrategy(times) {
           if (times > 3) {
-            console.warn('[Redis] Max reconnect attempts reached. Switching to in-memory queue fallback.');
+            logger.warn('Max Redis reconnect attempts reached. Switching to in-memory queue fallback.');
             return null;
           }
           return Math.min(times * 100, 2000);
@@ -22,19 +23,19 @@ export function initRedis() {
 
       redisClient.on('connect', () => {
         isRedisAvailable = true;
-        console.log('[Redis] Connected successfully to Redis.');
+        logger.info('Connected to Redis.');
       });
 
       redisClient.on('error', (err) => {
-        console.warn(`[Redis] Redis connection issue: ${err.message}. Using in-memory queue fallback.`);
+        logger.warn({ err: err.message }, 'Redis connection issue. Falling back to in-memory queue.');
         isRedisAvailable = false;
       });
     } catch (err) {
-      console.warn(`[Redis] Redis init failed: ${err.message}. Using in-memory queue.`);
+      logger.warn({ err: err.message }, 'Redis init failed. Using in-memory queue fallback.');
       isRedisAvailable = false;
     }
   } else {
-    console.log('[Queue] No REDIS_URL provided. Running with built-in asynchronous in-memory job queue.');
+    logger.info('No REDIS_URL provided. Using in-memory job queue (dev only).');
     isRedisAvailable = false;
   }
 }
