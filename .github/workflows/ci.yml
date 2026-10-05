@@ -1,0 +1,32 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  node:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        folder: [client, server]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        working-directory: ${{ matrix.folder }}
+        run: npm ci
+
+      - name: Run build (if present)
+        working-directory: ${{ matrix.folder }}
+        run: |
+          if [ -f package.json ]; then
+            npm run build || echo "No build or build failed in ${{ matrix.folder }} (non-fatal)";
+          fi

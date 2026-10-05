@@ -27,3 +27,10 @@ tmp/
 *.pid
 /.pnp
 /.pnp.js
+Thumbs.db
+*.pem
+*.key
+*.crt
+credentials
+config
+.aws/

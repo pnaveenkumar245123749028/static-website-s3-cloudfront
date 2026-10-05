@@ -1,0 +1,141 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 460" fill="none">
+  <defs>
+    <linearGradient id="bgBox" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="edgeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#6366f1"/>
+    </linearGradient>
+    <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="denyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ef4444"/>
+      <stop offset="100%" stop-color="#b91c1c"/>
+    </linearGradient>
+    <filter id="cardShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+
+  <!-- Canvas Background -->
+  <rect width="1000" height="460" rx="16" fill="#0b1120"/>
+  <rect x="1" y="1" width="998" height="458" rx="15" stroke="#1e293b" stroke-width="1.5"/>
+
+  <!-- Grid pattern overlay -->
+  <g opacity="0.07" stroke="#94a3b8" stroke-width="1">
+    <path d="M0 46h1000 M0 92h1000 M0 138h1000 M0 184h1000 M0 230h1000 M0 276h1000 M0 322h1000 M0 368h1000 M0 414h1000"/>
+    <path d="M50 0v460 M100 0v460 M150 0v460 M200 0v460 M250 0v460 M300 0v460 M350 0v460 M400 0v460 M450 0v460 M500 0v460 M550 0v460 M600 0v460 M650 0v460 M700 0v460 M750 0v460 M800 0v460 M850 0v460 M900 0v460 M950 0v460"/>
+  </g>
+
+  <!-- Title Badge -->
+  <rect x="40" y="24" width="370" height="32" rx="16" fill="#1e293b" stroke="#334155"/>
+  <circle cx="56" cy="40" r="5" fill="#10b981"/>
+  <text x="70" y="45" fill="#e2e8f0" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="600" letter-spacing="0.5">SECURE STATIC WEB HOSTING ARCHITECTURE</text>
+
+  <!-- Step 1: User / Client -->
+  <g transform="translate(40, 100)" filter="url(#cardShadow)">
+    <rect width="160" height="230" rx="12" fill="url(#bgBox)" stroke="#334155" stroke-width="1.5"/>
+    <rect x="0" y="0" width="160" height="4" rx="2" fill="#38bdf8"/>
+    <!-- Laptop / Browser Icon -->
+    <rect x="55" y="32" width="50" height="34" rx="4" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
+    <line x1="45" y1="66" x2="115" y2="66" stroke="#38bdf8" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="80" cy="49" r="6" fill="#38bdf8" opacity="0.4"/>
+    <text x="80" y="100" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="700" text-anchor="middle">End Users</text>
+    <text x="80" y="122" fill="#94a3b8" font-family="system-ui, -apple-system, sans-serif" font-size="11" text-anchor="middle">Global Web Browsers</text>
+    <rect x="18" y="145" width="124" height="24" rx="6" fill="#0f172a" stroke="#1e293b"/>
+    <text x="80" y="161" fill="#38bdf8" font-family="monospace" font-size="10.5" text-anchor="middle">HTTPS (TLS 1.3)</text>
+    <rect x="18" y="178" width="124" height="24" rx="6" fill="#0f172a" stroke="#1e293b"/>
+    <text x="80" y="194" fill="#a5b4fc" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" text-anchor="middle">Port 443 Strict</text>
+  </g>
+
+  <!-- Route 53 Cloud / DNS Box (Above the arrow) -->
+  <g transform="translate(230, 80)">
+    <rect width="130" height="64" rx="8" fill="#1e293b" stroke="#f59e0b" stroke-width="1.5"/>
+    <text x="65" y="26" fill="#fbbf24" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700" text-anchor="middle">AWS Route 53</text>
+    <text x="65" y="44" fill="#94a3b8" font-family="system-ui, -apple-system, sans-serif" font-size="10" text-anchor="middle">DNS Alias Record (A)</text>
+    <path d="M65 64v24" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="3 3"/>
+  </g>
+
+  <!-- Connection: User -> CloudFront -->
+  <g stroke="#38bdf8" stroke-width="2" fill="none">
+    <path d="M200 215h180"/>
+    <polygon points="380,210 395,215 380,220" fill="#38bdf8"/>
+  </g>
+  <rect x="235" y="200" width="120" height="28" rx="6" fill="#0b1120" stroke="#38bdf8" stroke-width="1"/>
+  <text x="295" y="218" fill="#e2e8f0" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" text-anchor="middle">HTTPS Request</text>
+
+  <!-- Step 2: CloudFront CDN -->
+  <g transform="translate(395, 80)" filter="url(#cardShadow)">
+    <rect width="230" height="270" rx="12" fill="url(#bgBox)" stroke="#6366f1" stroke-width="1.5"/>
+    <rect x="0" y="0" width="230" height="4" rx="2" fill="#6366f1"/>
+    <!-- CloudFront Icon / Badge -->
+    <rect x="95" y="24" width="40" height="40" rx="8" fill="#312e81" stroke="#818cf8"/>
+    <path d="M107 44h16m-8-8v16" stroke="#c7d2fe" stroke-width="2" stroke-linecap="round"/>
+    <text x="115" y="85" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="700" text-anchor="middle">Amazon CloudFront</text>
+    <text x="115" y="103" fill="#a5b4fc" font-family="system-ui, -apple-system, sans-serif" font-size="11" text-anchor="middle">Global Edge Network (CDN)</text>
+    
+    <!-- Feature items -->
+    <rect x="20" y="120" width="190" height="24" rx="6" fill="#0f172a" stroke="#1e293b"/>
+    <text x="30" y="136" fill="#38bdf8" font-family="system-ui, -apple-system, sans-serif" font-size="10.5">✓ 400+ Edge Locations (PoPs)</text>
+    
+    <rect x="20" y="152" width="190" height="24" rx="6" fill="#0f172a" stroke="#1e293b"/>
+    <text x="30" y="168" fill="#38bdf8" font-family="system-ui, -apple-system, sans-serif" font-size="10.5">✓ HTTPS Redirect (Redirect HTTP)</text>
+
+    <rect x="20" y="184" width="190" height="24" rx="6" fill="#0f172a" stroke="#1e293b"/>
+    <text x="30" y="200" fill="#38bdf8" font-family="system-ui, -apple-system, sans-serif" font-size="10.5">✓ CachingOptimized Cache Policy</text>
+
+    <rect x="20" y="216" width="190" height="24" rx="6" fill="#0f172a" stroke="#1e293b"/>
+    <text x="30" y="232" fill="#38bdf8" font-family="system-ui, -apple-system, sans-serif" font-size="10.5">✓ Root: index.html</text>
+  </g>
+
+  <!-- OAC Guard Element (Between CloudFront and S3) -->
+  <g transform="translate(650, 175)">
+    <rect width="90" height="80" rx="8" fill="#064e3b" stroke="#10b981" stroke-width="1.5"/>
+    <!-- Lock / Shield -->
+    <path d="M45 22v-6a7 7 0 0 0-14 0v6m-4 0h22a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H27a2 2 0 0 1-2-2V24a2 2 0 0 1 2-2z" stroke="#34d399" stroke-width="2" fill="none"/>
+    <text x="45" y="55" fill="#a7f3d0" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" text-anchor="middle">OAC</text>
+    <text x="45" y="69" fill="#6ee7b7" font-family="system-ui, -apple-system, sans-serif" font-size="9" text-anchor="middle">SigV4 Auth</text>
+  </g>
+
+  <!-- Arrow: CloudFront -> OAC -> S3 -->
+  <g stroke="#10b981" stroke-width="2" fill="none">
+    <path d="M625 215h25"/>
+    <path d="M740 215h25"/>
+    <polygon points="765,210 780,215 765,220" fill="#10b981"/>
+  </g>
+
+  <!-- Step 3: Private S3 Bucket -->
+  <g transform="translate(780, 80)" filter="url(#cardShadow)">
+    <rect width="180" height="270" rx="12" fill="url(#bgBox)" stroke="#10b981" stroke-width="1.5"/>
+    <rect x="0" y="0" width="180" height="4" rx="2" fill="#10b981"/>
+    <!-- Bucket Icon -->
+    <rect x="70" y="24" width="40" height="38" rx="6" fill="#064e3b" stroke="#10b981" stroke-width="1.5"/>
+    <ellipse cx="90" cy="30" rx="16" ry="6" fill="#047857" stroke="#34d399"/>
+    <text x="90" y="85" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="700" text-anchor="middle">Amazon S3</text>
+    <text x="90" y="103" fill="#6ee7b7" font-family="system-ui, -apple-system, sans-serif" font-size="11" text-anchor="middle">Private Origin Storage</text>
+
+    <!-- Security flags -->
+    <rect x="15" y="120" width="150" height="24" rx="6" fill="#0f172a" stroke="#065f46"/>
+    <text x="25" y="136" fill="#34d399" font-family="system-ui, -apple-system, sans-serif" font-size="10.5">🔒 Block Public Access: ON</text>
+
+    <rect x="15" y="152" width="150" height="24" rx="6" fill="#0f172a" stroke="#065f46"/>
+    <text x="25" y="168" fill="#34d399" font-family="system-ui, -apple-system, sans-serif" font-size="10.5">🛡️ OAC Policy Restrict</text>
+
+    <rect x="15" y="184" width="150" height="24" rx="6" fill="#0f172a" stroke="#065f46"/>
+    <text x="25" y="200" fill="#94a3b8" font-family="system-ui, -apple-system, sans-serif" font-size="10">📁 index.html</text>
+
+    <rect x="15" y="216" width="150" height="24" rx="6" fill="#0f172a" stroke="#065f46"/>
+    <text x="25" y="232" fill="#94a3b8" font-family="system-ui, -apple-system, sans-serif" font-size="10">📁 /assets (css, js, img)</text>
+  </g>
+
+  <!-- Block Direct Access Indicator (Forbidden Arrow below) -->
+  <g transform="translate(180, 380)">
+    <path d="M0 0h580" stroke="#ef4444" stroke-width="2" stroke-dasharray="4 4"/>
+    <rect x="220" y="-14" width="160" height="28" rx="6" fill="#450a0a" stroke="#ef4444" stroke-width="1.5"/>
+    <text x="300" y="4" fill="#fca5a5" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" text-anchor="middle">❌ DIRECT PUBLIC ACCESS BLOCKED</text>
+  </g>
+</svg>

@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cloud Engineering Portfolio | AWS S3, CloudFront &amp; Route 53</title>
+  <meta name="description" content="Professional portfolio and cloud showcase demonstrating secure, globally distributed static website hosting using Amazon S3, CloudFront OAC, Route 53, and ACM.">
+  <meta name="keywords" content="AWS, CloudFront, Amazon S3, Route 53, OAC, Static Website, Cloud Security, Full Stack, Python, SQL">
+  <meta name="author" content="Naveen Kumar [Candidate]">
+  
+  <!-- Open Graph / Meta -->
+  <meta property="og:title" content="Secure and Globally Distributed Static Website Hosting Using AWS">
+  <meta property="og:description" content="Portfolio and production cloud architecture powered by Amazon S3, CloudFront CDN, and Route 53.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/images/aws-architecture-diagram.svg">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+
+  <!-- Stylesheet (Relative Path) -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <!-- Keyboard Accessibility Skip Link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- ========================================================================
+       Site Header & Navigation
+       ======================================================================== -->
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a href="#hero" class="brand-link" aria-label="Home - Cloud Portfolio">
+        <div class="brand-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
+          </svg>
+        </div>
+        <div class="brand-text">Cloud<span>Portfolio</span></div>
+      </a>
+
+      <!-- Desktop & Mobile Navigation Menu -->
+      <nav id="site-nav" aria-label="Primary Navigation">
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="#hero" class="nav-link active">Home</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#skills" class="nav-link">Skills</a></li>
+          <li><a href="#projects" class="nav-link">Projects</a></li>
+          <li><a href="#aws-cloud" class="nav-link">AWS Architecture</a></li>
+          <li><a href="#experience" class="nav-link">Experience</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Action Controls -->
+      <div class="header-actions">
+        <!-- Theme Toggle -->
+        <button type="button" class="theme-toggle-btn" id="theme-toggle-btn" aria-label="Toggle dark/light theme">
+          <svg id="theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+            <!-- Icon injected by JS -->
+          </svg>
+        </button>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button type="button" class="mobile-nav-toggle" id="mobile-nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation menu">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       Main Content Container
+       ======================================================================== -->
+  <main id="main-content">
+
+    <!-- ----------------------------------------------------------------------
+         1. Hero Section
+         ---------------------------------------------------------------------- -->
+    <section class="hero-section" id="hero" aria-labelledby="hero-heading">
+      <div class="container">
+        <div class="hero-grid">
+          
+          <div class="hero-content">
+            <!-- Status Badge -->
+            <div class="status-badge" role="status">
+              <span class="status-pulse" aria-hidden="true"></span>
+              <span>Available for Internship &amp; Cloud Roles</span>
+            </div>
+
+            <h1 class="hero-title" id="hero-heading">
+              Secure Cloud Solutions &amp; <br>
+              <span class="gradient-text">Modern Web Engineering</span>
+            </h1>
+
+            <div class="hero-role">Cloud &amp; Full-Stack Solutions Engineer</div>
+
+            <p class="hero-summary">
+              Welcome! I specialize in designing highly available, globally distributed, and strictly secured static web applications on Amazon Web Services (AWS) using S3, CloudFront CDN, Route 53, and Origin Access Control (OAC), complemented by clean Full Stack, Python, and SQL skills.
+            </p>
+
+            <div class="hero-cta-group">
+              <a href="#projects" class="btn btn-primary">
+                <span>View Projects</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </a>
+              <a href="#aws-cloud" class="btn btn-secondary">
+                <span>AWS Architecture</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                  <polyline points="2 17 12 22 22 17"></polyline>
+                  <polyline points="2 12 12 17 22 12"></polyline>
+                </svg>
+              </a>
+              <a href="#contact" class="btn btn-outline">
+                <span>Contact Me</span>
+              </a>
+            </div>
+
+            <!-- Metrics Highlight Row -->
+            <div class="hero-metrics">
+              <div class="metric-item">
+                <span class="metric-val">100%</span>
+                <span class="metric-label">Private S3 Origin</span>
+              </div>
+              <div class="metric-item">
+                <span class="metric-val">&lt; 50ms</span>
+                <span class="metric-label">Global Edge Latency</span>
+              </div>
+              <div class="metric-item">
+                <span class="metric-val">TLS 1.3</span>
+                <span class="metric-label">Enforced HTTPS</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hero Visual / Profile Card -->
+          <div class="hero-visual">
+            <div class="avatar-card">
+              <div class="avatar-image-wrapper">
+                <img src="assets/images/avatar-placeholder.svg" alt="Profile avatar illustration for Cloud Engineer" width="320" height="320">
+              </div>
+              <div class="avatar-tags">
+                <span class="tag-pill">AWS Certified Focus</span>
+                <span class="tag-pill">CloudFront OAC</span>
+                <span class="tag-pill">Private S3</span>
+                <span class="tag-pill">Route 53</span>
+                <span class="tag-pill">Zero-Trust IAM</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ----------------------------------------------------------------------
+         2. About Section
+         ---------------------------------------------------------------------- -->
+    <section class="section section-alt" id="about" aria-labelledby="about-heading">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-subtitle">Background &amp; Philosophy</div>
+          <h2 class="section-title" id="about-heading">About Me</h2>
+          <p class="section-desc">
+            Bridging resilient cloud infrastructure design with modern, accessible frontend development.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-text">
+            <p>
+              I am an aspiring Cloud and Software Engineer passionate about designing secure, resilient, and performant cloud architectures. My engineering journey centers on building reliable solutions that eliminate single points of failure, minimize attack surfaces, and optimize delivery performance.
+            </p>
+            <p>
+              Rather than relying on unvetted monoliths or needlessly complex clusters for static workloads, I advocate for serverless and managed edge architecture. By harnessing Amazon S3 for durable object storage, Amazon CloudFront for low-latency edge distribution, and CloudFront Origin Access Control (OAC) for zero-trust authorization, static applications achieve enterprise-grade security and 99.99% availability with minimal operating overhead.
+            </p>
+
+            <div class="about-highlights">
+              <div class="highlight-box">
+                <h4>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                  Cloud Security First
+                </h4>
+                <p>Enforcing least-privilege IAM policies, S3 Block Public Access, and encrypted transport.</p>
+              </div>
+
+              <div class="highlight-box">
+                <h4>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                  Global Edge Delivery
+                </h4>
+                <p>Utilizing 400+ CloudFront edge locations for sub-50ms worldwide content distribution.</p>
+              </div>
+
+              <div class="highlight-box">
+                <h4>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                  Clean Code Standard
+                </h4>
+                <p>Adhering to semantic HTML5, responsive CSS3, modular JavaScript, and documented testing.</p>
+              </div>
+
+              <div class="highlight-box">
+                <h4>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                  Cost &amp; Scale Efficiency
+                </h4>
+                <p>Designing static architectures without idling server costs or unnecessary infrastructure.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Stats Sidebar -->
+          <div class="about-sidebar">
+            <div class="about-sidebar-card">
+              <h3>Profile Summary</h3>
+              <ul class="info-list">
+                <li class="info-item">
+                  <span class="info-label">Current Role</span>
+                  <span class="info-value">Cloud &amp; Full Stack Intern / Candidate</span>
+                </li>
+                <li class="info-item">
+                  <span class="info-label">Education</span>
+                  <span class="info-value">[Bachelor of Engineering / Technology in CS/IT]</span>
+                </li>
+                <li class="info-item">
+                  <span class="info-label">Core Specialization</span>
+                  <span class="info-value">AWS Cloud Services, Web Technologies, Python &amp; SQL</span>
+                </li>
+                <li class="info-item">
+                  <span class="info-label">AWS Architecture Speciality</span>
+                  <span class="info-value">S3 + CloudFront CDN + Route 53 + OAC</span>
+                </li>
+                <li class="info-item">
+                  <span class="info-label">Status</span>
+                  <span class="info-value" style="color: var(--accent-emerald);">● Ready for Immediate Deployment</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ----------------------------------------------------------------------
+         3. Skills Section
+         ---------------------------------------------------------------------- -->
+    <section class="section" id="skills" aria-labelledby="skills-heading">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-subtitle">Technical Competencies</div>
+          <h2 class="section-title" id="skills-heading">Skills &amp; Expertise</h2>
+          <p class="section-desc">
+            Organized across core engineering domains matching modern cloud and software development roles.
+          </p>
+        </div>
+
+        <div class="skills-grid">
+          <!-- 1. Full Stack -->
+          <div class="skill-card">
+            <div class="skill-card-header">
+              <div class="skill-icon-wrap" aria-hidden="true">🌐</div>
+              <h3>Full Stack Development</h3>
+            </div>
+            <p>
+              Building responsive, semantic, and performant web interfaces with clean architecture and strict accessibility compliance.
+            </p>
+            <div class="skill-badge-list">
+              <span class="skill-badge">HTML5 Semantic</span>
+              <span class="skill-badge">CSS3 Flex/Grid</span>
+              <span class="skill-badge">Vanilla JS ES6+</span>
+              <span class="skill-badge">Responsive Design</span>
+              <span class="skill-badge">REST APIs</span>
+              <span class="skill-badge">Git &amp; GitHub</span>
+            </div>
+          </div>
+
+          <!-- 2. Python -->
+          <div class="skill-card">
+            <div class="skill-card-header">
+              <div class="skill-icon-wrap" aria-hidden="true">🐍</div>
+              <h3>Python Engineering</h3>
+            </div>
+            <p>
+              Developing automation scripts, infrastructure utilities, data parsers, and test suites with robust error handling.
+            </p>
+            <div class="skill-badge-list">
+              <span class="skill-badge">Python 3</span>
+              <span class="skill-badge">Automation Scripts</span>
+              <span class="skill-badge">Data Processing</span>
+              <span class="skill-badge">File I/O &amp; JSON</span>
+              <span class="skill-badge">Unit Testing</span>
+              <span class="skill-badge">Clean Code</span>
+            </div>
+          </div>
+
+          <!-- 3. SQL & Data -->
+          <div class="skill-card">
+            <div class="skill-card-header">
+              <div class="skill-icon-wrap" aria-hidden="true">🗄️</div>
+              <h3>SQL &amp; Relational Data</h3>
+            </div>
+            <p>
+              Designing relational schemas, crafting complex joins, writing performant aggregation queries, and ensuring data integrity.
+            </p>
+            <div class="skill-badge-list">
+              <span class="skill-badge">SQL DDL &amp; DML</span>
+              <span class="skill-badge">Complex Joins</span>
+              <span class="skill-badge">Aggregations</span>
+              <span class="skill-badge">Indexing Concepts</span>
+              <span class="skill-badge">Data Modeling</span>
+              <span class="skill-badge">PostgreSQL / MySQL</span>
+            </div>
+          </div>
+
+          <!-- 4. AWS / Cloud -->
+          <div class="skill-card">
+            <div class="skill-card-header">
+              <div class="skill-icon-wrap" aria-hidden="true">☁️</div>
+              <h3>AWS &amp; Cloud Infrastructure</h3>
+            </div>
+            <p>
+              Architecting secure static hosting, global content distribution, DNS resolution, and managed TLS certificates on AWS.
+            </p>
+            <div class="skill-badge-list">
+              <span class="skill-badge">Amazon S3</span>
+              <span class="skill-badge">Amazon CloudFront</span>
+              <span class="skill-badge">Origin Access Control (OAC)</span>
+              <span class="skill-badge">Amazon Route 53</span>
+              <span class="skill-badge">AWS Certificate Manager (ACM)</span>
+              <span class="skill-badge">AWS CLI</span>
+            </div>
+          </div>
+
+          <!-- 5. Cybersecurity -->
+          <div class="skill-card">
+            <div class="skill-card-header">
+              <div class="skill-icon-wrap" aria-hidden="true">🛡️</div>
+              <h3>Cybersecurity &amp; Best Practices</h3>
+            </div>
+            <p>
+              Implementing zero-trust access, origin lockdown, public exposure elimination, and strict encryption protocols.
+            </p>
+            <div class="skill-badge-list">
+              <span class="skill-badge">Least-Privilege IAM</span>
+              <span class="skill-badge">S3 Block Public Access</span>
+              <span class="skill-badge">CloudFront OAC Signing</span>
+              <span class="skill-badge">Enforced TLS 1.3</span>
+              <span class="skill-badge">Zero Secrets in Code</span>
+              <span class="skill-badge">OWASP Awareness</span>
+            </div>
+          </div>
+
+          <!-- 6. DevOps & Monitoring -->
+          <div class="skill-card">
+            <div class="skill-card-header">
+              <div class="skill-icon-wrap" aria-hidden="true">⚙️</div>
+              <h3>DevOps &amp; Quality Assurance</h3>
+            </div>
+            <p>
+              Version control discipline, local verification servers, cache invalidation strategies, and systematic test matrix execution.
+            </p>
+            <div class="skill-badge-list">
+              <span class="skill-badge">Git Versioning</span>
+              <span class="skill-badge">Cache Invalidation</span>
+              <span class="skill-badge">Cross-Device QA</span>
+              <span class="skill-badge">Console Zero-Error</span>
+              <span class="skill-badge">Technical Documentation</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ----------------------------------------------------------------------
+         4. Projects Section
+         ---------------------------------------------------------------------- -->
+    <section class="section section-alt" id="projects" aria-labelledby="projects-heading">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-subtitle">Demonstrated Solutions</div>
+          <h2 class="section-title" id="projects-heading">Featured Projects</h2>
+          <p class="section-desc">
+            Production-grade cloud architecture, data pipelines, and responsive web systems with complete documentation.
+          </p>
+        </div>
+
+        <!-- Category Filter -->
+        <div class="project-filter-bar" role="tablist" aria-label="Filter projects by category">
+          <button type="button" class="filter-btn active" data-filter="all">All Projects</button>
+          <button type="button" class="filter-btn" data-filter="aws">AWS &amp; Cloud</button>
+          <button type="button" class="filter-btn" data-filter="fullstack">Full Stack</button>
+          <button type="button" class="filter-btn" data-filter="data">Python &amp; SQL</button>
+        </div>
+
+        <div class="projects-grid">
+          <!-- Project 1: Flagship AWS Static Hosting -->
+          <article class="project-card" data-category="aws" aria-labelledby="p1-title">
+            <div class="project-thumb">
+              <img src="assets/images/project-aws-showcase.svg" alt="Preview of Secure Static Website Hosting on AWS" width="600" height="340" loading="lazy">
+              <span class="project-badge-top">Flagship Architecture</span>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title" id="p1-title">Globally Distributed Static Website on AWS</h3>
+              <p class="project-desc">
+                Enterprise-grade static web hosting combining a private S3 origin with CloudFront CDN, Route 53 DNS, and modern Origin Access Control (OAC). Eliminates server overhead while achieving sub-50ms latency.
+              </p>
+              <ul class="project-bullets">
+                <li>S3 Block Public Access 100% enabled for total origin isolation.</li>
+                <li>CloudFront OAC with SigV4 authentication on REST origin endpoint.</li>
+                <li>Route 53 Alias record routing with automated ACM SSL/TLS.</li>
+              </ul>
+              <div class="project-tech-tags">
+                <span class="project-tech-tag">Amazon S3</span>
+                <span class="project-tech-tag">CloudFront OAC</span>
+                <span class="project-tech-tag">Route 53</span>
+                <span class="project-tech-tag">AWS ACM</span>
+                <span class="project-tech-tag">HTML5/CSS3</span>
+              </div>
+              <div class="project-actions">
+                <a href="#aws-cloud" class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.85rem;">View Architecture</a>
+                <a href="docs/architecture.md" class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.85rem;">Read Architecture Doc</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 2: Cloud Security Baseline -->
+          <article class="project-card" data-category="aws" aria-labelledby="p2-title">
+            <div class="project-thumb">
+              <img src="assets/images/project-cloud-security.svg" alt="Preview of AWS IAM and S3 Security Hardening Project" width="600" height="340" loading="lazy">
+              <span class="project-badge-top">Security Baseline</span>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title" id="p2-title">IAM &amp; S3 Security Hardening Framework</h3>
+              <p class="project-desc">
+                Comprehensive security reference implementation auditing AWS IAM policies and storage configurations against CIS Benchmarks to prevent credential leaks and unauthenticated bucket exposure.
+              </p>
+              <ul class="project-bullets">
+                <li>Strict JSON policy definitions using condition keys (<code style="color: var(--accent-cyan);">AWS:SourceArn</code>).</li>
+                <li>Zero-trust isolation replacing legacy Origin Access Identity (OAI).</li>
+                <li>Audit checklist for Block Public Access verification.</li>
+              </ul>
+              <div class="project-tech-tags">
+                <span class="project-tech-tag">AWS IAM</span>
+                <span class="project-tech-tag">S3 Security</span>
+                <span class="project-tech-tag">CloudFront OAC</span>
+                <span class="project-tech-tag">Least Privilege</span>
+              </div>
+              <div class="project-actions">
+                <a href="docs/security.md" class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.85rem;">Security Specs</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 3: Python & SQL Data Engine -->
+          <article class="project-card" data-category="data" aria-labelledby="p3-title">
+            <div class="project-thumb">
+              <img src="assets/images/project-data-analytics.svg" alt="Preview of Data Pipeline & Analytics Engine" width="600" height="340" loading="lazy">
+              <span class="project-badge-top">Data &amp; Automation</span>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title" id="p3-title">Automated Data Pipeline &amp; Analytics Engine</h3>
+              <p class="project-desc">
+                Python automation suite that ingests multi-source transactional datasets, applies SQL transformations, and generates automated performance summaries with verification checks.
+              </p>
+              <ul class="project-bullets">
+                <li>Automated CSV/JSON schema validation and cleansing routines.</li>
+                <li>Complex SQL aggregation queries measuring monthly metrics.</li>
+                <li>Export utilities generating audit logs and visual summaries.</li>
+              </ul>
+              <div class="project-tech-tags">
+                <span class="project-tech-tag">Python 3</span>
+                <span class="project-tech-tag">SQL</span>
+                <span class="project-tech-tag">ETL Pipeline</span>
+                <span class="project-tech-tag">Data Validation</span>
+              </div>
+              <div class="project-actions">
+                <a href="#contact" class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.85rem;">Request Demo</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 4: Full Stack Responsive Web Platform -->
+          <article class="project-card" data-category="fullstack" aria-labelledby="p4-title">
+            <div class="project-thumb">
+              <img src="assets/images/project-web-platform.svg" alt="Preview of Responsive Web Platform" width="600" height="340" loading="lazy">
+              <span class="project-badge-top">Web Engineering</span>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title" id="p4-title">Modern Responsive Web Platform</h3>
+              <p class="project-desc">
+                High-performance static client application built purely with semantic HTML5, responsive CSS3 variables, and vanilla JavaScript. Features accessible navigation and dark/light mode toggling.
+              </p>
+              <ul class="project-bullets">
+                <li>Zero external runtime dependencies for maximum speed and zero vulnerabilities.</li>
+                <li>100% WCAG-compliant keyboard focus visibility and screen-reader tags.</li>
+                <li>Optimized vector assets delivering instant sub-second paint times.</li>
+              </ul>
+              <div class="project-tech-tags">
+                <span class="project-tech-tag">HTML5 Semantic</span>
+                <span class="project-tech-tag">CSS3 Variables</span>
+                <span class="project-tech-tag">Vanilla JS</span>
+                <span class="project-tech-tag">Accessibility (A11y)</span>
+              </div>
+              <div class="project-actions">
+                <a href="#hero" class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.85rem;">Live Interface</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ----------------------------------------------------------------------
+         5. AWS Cloud Architecture Section (Interactive Deep Dive)
+         ---------------------------------------------------------------------- -->
+    <section class="section cloud-architecture-showcase" id="aws-cloud" aria-labelledby="aws-cloud-heading">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-subtitle">Cloud Architecture &amp; Delivery Flow</div>
+          <h2 class="section-title" id="aws-cloud-heading">AWS S3 + CloudFront + Route 53</h2>
+          <p class="section-desc">
+            An in-depth breakdown of the secure, globally distributed hosting architecture and zero-trust origin protection.
+          </p>
+        </div>
+
+        <!-- Architecture Diagram Visual Box -->
+        <div class="arch-visual-container">
+          <div class="arch-visual-header">
+            <div class="arch-visual-title">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                <line x1="8" y1="21" x2="16" y2="21"></line>
+                <line x1="12" y1="17" x2="12" y2="21"></line>
+              </svg>
+              <span>Production Infrastructure Traffic &amp; Security Boundary</span>
+            </div>
+            <span class="tag-pill" style="border-color: var(--accent-emerald); color: var(--accent-emerald);">Verified Zero-Trust Origin</span>
+          </div>
+
+          <div class="arch-diagram-wrapper">
+            <img src="assets/images/aws-architecture-diagram.svg" alt="Comprehensive architecture diagram showing User, Route 53, CloudFront edge PoPs, Origin Access Control, and Private Amazon S3 Origin" width="1000" height="460">
+          </div>
+        </div>
+
+        <!-- Interactive Step Cards -->
+        <div class="arch-steps-grid" role="tablist" aria-label="Architecture Steps">
+          <div class="arch-step-card active" data-step="1" tabindex="0" role="tab" aria-selected="true">
+            <div class="arch-step-num">Step 01</div>
+            <div class="arch-step-title">Route 53 DNS</div>
+            <div class="arch-step-desc">Custom domain resolution via low-latency Anycast routing &amp; Alias records.</div>
+          </div>
+
+          <div class="arch-step-card" data-step="2" tabindex="0" role="tab" aria-selected="false">
+            <div class="arch-step-num">Step 02</div>
+            <div class="arch-step-title">CloudFront CDN</div>
+            <div class="arch-step-desc">Global Edge locations, HTTPS termination, and CachingOptimized delivery.</div>
+          </div>
+
+          <div class="arch-step-card" data-step="3" tabindex="0" role="tab" aria-selected="false">
+            <div class="arch-step-num">Step 03</div>
+            <div class="arch-step-title">Origin Access Control</div>
+            <div class="arch-step-desc">SigV4 request signing between CloudFront and the private S3 bucket.</div>
+          </div>
+
+          <div class="arch-step-card" data-step="4" tabindex="0" role="tab" aria-selected="false">
+            <div class="arch-step-num">Step 04</div>
+            <div class="arch-step-title">Private Amazon S3</div>
+            <div class="arch-step-desc">Block Public Access enabled; restricts access strictly to the distribution ARN.</div>
+          </div>
+
+          <div class="arch-step-card" data-step="5" tabindex="0" role="tab" aria-selected="false">
+            <div class="arch-step-num">Step 05</div>
+            <div class="arch-step-title">ACM TLS/SSL</div>
+            <div class="arch-step-desc">Managed public TLS certificate in us-east-1 enabling secure HTTPS transport.</div>
+          </div>
+        </div>
+
+        <!-- Interactive Details & Code Panel -->
+        <div class="arch-detail-panel" aria-live="polite">
+          <div class="detail-col">
+            <h3 id="arch-detail-title">Route 53 DNS Resolution</h3>
+            <p id="arch-detail-summary" style="color: var(--text-secondary); margin-bottom: 1.25rem;">
+              Handles global low-latency domain name resolution using AWS Anycast network.
+            </p>
+            <ul class="feature-check-list" id="arch-detail-list">
+              <li><span class="icon-check">✔</span><span>Custom domain maps directly to CloudFront using an <strong>Alias (A) record</strong>.</span></li>
+              <li><span class="icon-check">✔</span><span>Zero query charges when routing queries to AWS CloudFront distributions.</span></li>
+              <li><span class="icon-check">✔</span><span>Seamless health checks and failover routing capabilities.</span></li>
+            </ul>
+          </div>
+
+          <div class="detail-col">
+            <h3 style="font-size: 1.05rem;">AWS Configuration Definition</h3>
+            <pre class="code-snippet-box" id="arch-detail-code">; Route 53 DNS Record Configuration
+portfolio.example.com.   A   ALIAS   d111111abcdef8.cloudfront.net.
+; TargetHostedZoneId: Z2FDTNDATAQYW2 (CloudFront Fixed Zone ID)</pre>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ----------------------------------------------------------------------
+         6. Experience & Academic Timeline
+         ---------------------------------------------------------------------- -->
+    <section class="section" id="experience" aria-labelledby="experience-heading">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-subtitle">Milestones &amp; Practice</div>
+          <h2 class="section-title" id="experience-heading">Experience &amp; Internships</h2>
+          <p class="section-desc">
+            Practical application of software development, cloud systems, and data analytics across project lifecycles.
+          </p>
+        </div>
+
+        <div class="timeline">
+          <!-- Item 1: Cloud Project & Internship -->
+          <div class="timeline-item">
+            <div class="timeline-dot" aria-hidden="true"></div>
+            <div class="timeline-content">
+              <div class="timeline-header">
+                <div>
+                  <h3 class="timeline-role">Cloud Infrastructure &amp; Frontend Intern</h3>
+                  <div class="timeline-org">[Your Organization / 8-Week Internship Project]</div>
+                </div>
+                <div class="timeline-period">[8-Week Intensive Track]</div>
+              </div>
+              <p style="color: var(--text-secondary); font-size: 0.9375rem;">
+                Spearheaded the development and deployment of a resilient, secure static website hosting architecture on AWS.
+              </p>
+              <ul class="timeline-bullets">
+                <li>Engineered a fully responsive, semantic web application adhering to HTML5, CSS3, and vanilla JavaScript standards.</li>
+                <li>Configured a private Amazon S3 bucket with Block Public Access strictly enabled, preventing unauthorized public read exposure.</li>
+                <li>Implemented CloudFront Origin Access Control (OAC) with SigV4 signing, creating an authenticated channel between edge servers and S3.</li>
+                <li>Created automated testing procedures across desktop, tablet, and mobile viewports with zero browser console errors.</li>
+                <li>Authored comprehensive architectural, security, and deployment documentation for technical review and audits.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Item 2: Academic / Prior Projects -->
+          <div class="timeline-item">
+            <div class="timeline-dot" aria-hidden="true"></div>
+            <div class="timeline-content">
+              <div class="timeline-header">
+                <div>
+                  <h3 class="timeline-role">Computer Science &amp; Engineering Studies</h3>
+                  <div class="timeline-org">[Your College / University Name]</div>
+                </div>
+                <div class="timeline-period">[Academic Period / Graduation Year]</div>
+              </div>
+              <p style="color: var(--text-secondary); font-size: 0.9375rem;">
+                Completed focused coursework in Computer Networks, Operating Systems, Database Management Systems (SQL), and Cloud Computing principles.
+              </p>
+              <ul class="timeline-bullets">
+                <li>Acquired solid grounding in network protocols: DNS, HTTP/HTTPS, SSL/TLS handshakes, and TCP/IP stack.</li>
+                <li>Designed normalized relational database schemas and authored optimized SQL analytical queries.</li>
+                <li>Built automated Python scripts for workflow efficiency, data transformations, and algorithm problem-solving.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ----------------------------------------------------------------------
+         7. Contact Section (Safe Form + Mailto Fallback)
+         ---------------------------------------------------------------------- -->
+    <section class="section section-alt" id="contact" aria-labelledby="contact-heading">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-subtitle">Get In Touch</div>
+          <h2 class="section-title" id="contact-heading">Contact &amp; Connect</h2>
+          <p class="section-desc">
+            Interested in collaboration, internship opportunities, or discussing cloud architecture? Reach out directly.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <!-- Contact Channels Info Panel -->
+          <div class="contact-info-panel">
+            <div class="contact-card">
+              <div class="contact-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              </div>
+              <div class="contact-details">
+                <h4>Direct Email</h4>
+                <p><a href="mailto:naveenkumar.workmail@gmail.com">naveenkumar.workmail@gmail.com</a></p>
+              </div>
+            </div>
+
+            <div class="contact-card">
+              <div class="contact-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+              </div>
+              <div class="contact-details">
+                <h4>LinkedIn Profile</h4>
+                <p><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">linkedin.com/in/[your-profile]</a></p>
+              </div>
+            </div>
+
+            <div class="contact-card">
+              <div class="contact-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+              </div>
+              <div class="contact-details">
+                <h4>GitHub Repository</h4>
+                <p><a href="https://github.com/pnaveenkumar245123749028" target="_blank" rel="noopener noreferrer">github.com/pnaveenkumar245123749028</a></p>
+              </div>
+            </div>
+
+            <div class="contact-card">
+              <div class="contact-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+              </div>
+              <div class="contact-details">
+                <h4>Security &amp; Privacy Notice</h4>
+                <p style="font-size: 0.8125rem; font-weight: normal; color: var(--text-muted);">
+                  This static site operates without backend databases or server credentials. Submissions initiate directly through your email client.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Safe Contact Form -->
+          <div class="contact-form-container">
+            <form class="contact-form" id="contact-form" novalidate>
+              <div class="form-status-alert" id="form-status" role="alert"></div>
+
+              <div class="form-group">
+                <label for="contact-name" class="form-label">Full Name *</label>
+                <input type="text" id="contact-name" class="form-input" placeholder="e.g. Alex Johnson" required autocomplete="name">
+              </div>
+
+              <div class="form-group">
+                <label for="contact-email" class="form-label">Email Address *</label>
+                <input type="email" id="contact-email" class="form-input" placeholder="e.g. alex@example.com" required autocomplete="email">
+              </div>
+
+              <div class="form-group">
+                <label for="contact-subject" class="form-label">Subject</label>
+                <input type="text" id="contact-subject" class="form-input" placeholder="e.g. Cloud Engineering Inquiry">
+              </div>
+
+              <div class="form-group">
+                <label for="contact-message" class="form-label">Message *</label>
+                <textarea id="contact-message" class="form-textarea" placeholder="Describe your project, role, or inquiry..." required></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary" style="width: 100%;">
+                <span>Send Message via Email Client</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <line x1="22" y1="2" x2="11" y2="13"></line>
+                  <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================================================
+       Footer
+       ======================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <h3>Cloud Engineering Portfolio</h3>
+          <p>
+            Secure, highly available static website hosting leveraging modern AWS architecture: Amazon S3 (Private), Amazon CloudFront CDN, Route 53, and Origin Access Control (OAC).
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#aws-cloud">AWS Architecture</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Documentation</h4>
+          <ul class="footer-links">
+            <li><a href="README.md">Project README</a></li>
+            <li><a href="docs/architecture.md">Architecture Specification</a></li>
+            <li><a href="docs/deployment-guide.md">Deployment Guide</a></li>
+            <li><a href="docs/security.md">Security &amp; OAC Guide</a></li>
+            <li><a href="docs/testing-report.md">Testing Matrix Report</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          &copy; 2026 Naveen Kumar [Candidate Portfolio]. Developed according to AWS Static Hosting Specification.
+        </div>
+        <div class="aws-badge-pill">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+          </svg>
+          <span>AWS S3 + CloudFront OAC Protected</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button type="button" class="back-to-top" id="back-to-top" aria-label="Back to top of page">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+  </button>
+
+  <!-- JavaScript (Relative Path) -->
+  <script src="assets/js/script.js"></script>
+</body>
+</html>
